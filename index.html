@@ -1,10 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Basic Ass Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Blue-teal gradient */
+      --accent: #00ffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-gradient);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 600px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00ffff, #00ff88);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin: 1rem 0 2rem;
+      color: #dcdcdc;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    a.button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px var(--accent);
+      }
+      to {
+        text-shadow: 0 0 20px var(--accent);
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <p>My name is Andrew Mihalevich. I'm an aspiring confidential informant. If you work for intelligence or law enforcement, please turn on my webcam and we can chat.</p>
+  <div class="container">
+    <h1>Hello, Internet.</h1>
+    <p>This is my little slice of the web. More cool stuff coming soon.</p>
+    <a class="button" href="#">Say Hi</a>
+  </div>
 </body>
 </html>
