@@ -93,12 +93,17 @@
   </style>
 </head>
 <body>
+  <!-- Top message (initially hidden) -->
+  <div id="confirmation" class="confirmation-banner">
+    INTEREST REGISTERED
+  </div>
+
   <!-- Section 1 -->
   <section>
     <div class="container">
       <h1>You've made it.</h1>
       <p>My name is Andrew Mihalevich. I'm an aspiring confidential informant. If you work for intelligence or law enforcement, please turn on my webcam and we can chat.</p>
-      <a class="button" href="#affirmation">Register Interest</a>
+      <a class="button" href="javascript:void(0)" onclick="registerInterest()">Register Interest</a>
     </div>
   </section>
 
@@ -110,9 +115,8 @@
   </section>
 
   <script>
-    // Scroll fade-in logic
+    // Scroll fade-in
     const fadeTarget = document.getElementById("message");
-
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
@@ -121,12 +125,16 @@
           }
         });
       },
-      {
-        threshold: 0.6,
-      }
+      { threshold: 0.6 }
     );
-
     observer.observe(fadeTarget);
+
+    // Button click logic
+    function registerInterest() {
+      const banner = document.getElementById("confirmation");
+      banner.classList.add("visible");
+    }
   </script>
 </body>
+
 </html>
