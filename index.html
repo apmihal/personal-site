@@ -7,8 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-gradient: linear-gradient(135deg, #2d3a26, #3f5633, #5f7e4a); /* Deep earthy greens */
-      --accent: #b8cc8c; /* Sage green */
+      --bg-gradient: linear-gradient(135deg, #2d3a26, #3f5633, #5f7e4a);
+      --accent: #b8cc8c;
     }
 
     * {
@@ -21,11 +21,16 @@
       font-family: 'Inter', sans-serif;
       background: var(--bg-gradient);
       color: #f0f5e1;
-      height: 100vh;
+      min-height: 200vh;
+      scroll-behavior: smooth;
+    }
+
+    section {
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      min-height: 100vh;
       padding: 2rem;
     }
 
@@ -65,20 +70,63 @@
     }
 
     @keyframes glow {
-      from {
-        text-shadow: 0 0 5px var(--accent);
-      }
-      to {
-        text-shadow: 0 0 20px var(--accent);
-      }
+      from { text-shadow: 0 0 5px var(--accent); }
+      to   { text-shadow: 0 0 20px var(--accent); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .affirmation h2 {
+      font-size: 2rem;
+      color: #e2f2c0;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Rooted & Growing</h1>
-    <p>My name is Andrew Mihalevich. I'm an aspiring confidential informant. If you work for intelligence or law enforcement, please turn on my webcam and we can chat.</p>
-    <a class="button" href="#">Get in touch</a>
-  </div>
+  <!-- Section 1 -->
+  <section>
+    <div class="container">
+      <h1>Rooted & Growing</h1>
+      <p>This is where my ideas take root. Thanks for visiting.</p>
+      <a class="button" href="#affirmation">Get in touch</a>
+    </div>
+  </section>
+
+  <!-- Section 2: Scroll fade-in -->
+  <section id="affirmation" class="affirmation">
+    <div class="container fade-in" id="message">
+      <h2>I am centered, valid, and in control.</h2>
+    </div>
+  </section>
+
+  <script>
+    // Scroll fade-in logic
+    const fadeTarget = document.getElementById("message");
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.6,
+      }
+    );
+
+    observer.observe(fadeTarget);
+  </script>
 </body>
 </html>
