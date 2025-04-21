@@ -27,6 +27,24 @@
       scroll-behavior: smooth;
     }
 
+    .oasis-title {
+      font-size: 4rem;
+      font-weight: 800;
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      background: linear-gradient(90deg, var(--highlight), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: wave 3s ease-in-out infinite alternate;
+      text-shadow: 0 0 10px rgba(100, 245, 171, 0.3);
+    }
+
+    @keyframes wave {
+      0%   { transform: rotate(-1deg) scale(1); }
+      50%  { transform: rotate(1deg) scale(1.03); }
+      100% { transform: rotate(-1deg) scale(1); }
+    }
+
     section {
       display: flex;
       align-items: center;
@@ -49,13 +67,21 @@
       animation: glow 2s ease-in-out infinite alternate;
     }
 
+    .fade-in-delay {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .fade-in-delay.visible {
+      opacity: 1;
+    }
+
     p {
       font-size: 1.25rem;
       margin: 1rem 0 2rem;
-      color: #dbe7c1;
+      color: var(--text);
     }
 
-    
     a.button {
       display: inline-block;
       padding: 0.75rem 1.5rem;
@@ -94,7 +120,7 @@
       color: var(--highlight);
       font-weight: 600;
     }
-    
+
     .confirmation-banner {
       position: fixed;
       top: 0;
@@ -115,19 +141,21 @@
       opacity: 1;
       transform: translateY(0);
     }
-
   </style>
 </head>
 <body>
-  <!-- Top message (initially hidden) -->
+  <!-- Top banner (initially hidden) -->
   <div id="confirmation" class="confirmation-banner">
     INTEREST REGISTERED
   </div>
 
+  <!-- Title -->
+  <div class="oasis-title">The Thinkers Oasis</div>
+
   <!-- Section 1 -->
   <section>
     <div class="container">
-      <h1>You've made it.</h1>
+      <h1 class="fade-in-delay">You've made it.</h1>
       <p>My name is Andrew Mihalevich. I'm an aspiring confidential informant. If you work for intelligence or law enforcement, please turn on my webcam and we can chat.</p>
       <a class="button" href="javascript:void(0)" onclick="registerInterest()">Register Interest</a>
     </div>
@@ -148,8 +176,6 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-          } else {
-            entry.target.classList.remove("visible");
           }
         });
       },
@@ -157,18 +183,17 @@
     );
     observer.observe(fadeTarget);
 
-    // Button click logic
+    // Delayed fade-in for main headline
+    window.addEventListener('DOMContentLoaded', () => {
+      const delayed = document.querySelector('.fade-in-delay');
+      setTimeout(() => delayed.classList.add('visible'), 1000);
+    });
+
+    // Register interest logic
     function registerInterest() {
       const banner = document.getElementById("confirmation");
       banner.classList.add("visible");
-
-    // Hide after 4 seconds
-    setTimeout(() => {
-      banner.classList.remove("visible");
-    }, 4000);
-  }
-
+    }
   </script>
 </body>
-
 </html>
