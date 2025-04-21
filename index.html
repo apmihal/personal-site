@@ -6,11 +6,12 @@
   <title>The Thinkers Oasis</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    
     :root {
-      --bg-gradient: linear-gradient(135deg, #3bdc97, #1f8a64, #144c3b);
-      --accent: #f57364;
-      --text: #e9fbee;
-      --highlight: #64f5ab;
+      --bg-gradient: linear-gradient(135deg, #DAEFB3, #CDE79B, #B9DA86);
+      --accent: #3D314A;
+      --text: #1a1a1a;
+      --highlight: #3D314A;
     }
 
     * {
@@ -116,6 +117,15 @@
       transform: translateY(0);
     }
 
+    .delayed-fade {
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    
+    .delayed-fade.visible {
+      opacity: 1;
+    }
+
   </style>
 </head>
 <body>
@@ -127,7 +137,7 @@
   <!-- Section 1 -->
   <section>
     <div class="container">
-      <h1>You've made it.</h1>
+      <h1 class="delayed-fade">You've made it.</h1>
       <p>My name is Andrew Mihalevich. I'm an aspiring confidential informant. If you work for intelligence or law enforcement, please turn on my webcam and we can chat.</p>
       <a class="button" href="javascript:void(0)" onclick="registerInterest()">Register Interest</a>
     </div>
@@ -166,7 +176,15 @@
     setTimeout(() => {
       banner.classList.remove("visible");
     }, 4000);
-  }
+    }
+
+    // Fade in "You've made it." after page load
+    window.addEventListener('load', () => {
+      const heading = document.querySelector('.delayed-fade');
+      setTimeout(() => {
+        heading.classList.add('visible');
+      }, 1000);
+    });
 
   </script>
 </body>
