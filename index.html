@@ -31,14 +31,19 @@
     }
 
     .oasis-title {
+      position: absolute;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
       font-family: 'Playfair Display', serif;
       font-size: 4rem;
       font-weight: 800;
       text-align: center;
-      padding: 2rem 1rem 1rem;
       background: linear-gradient(90deg, var(--highlight), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      z-index: 10;
+      pointer-events: none;
     }
 
     section {
@@ -72,6 +77,7 @@
 
     
     a.button {
+      font-family: 'Inter', sans-serif;
       display: inline-block;
       padding: 0.75rem 1.5rem;
       background: var(--accent);
