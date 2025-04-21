@@ -147,6 +147,17 @@
       opacity: 1;
     }
 
+    .contact-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 2rem;
+      background: #fff;
+      color: var(--accent);
+    }
+
   </style>
 </head>
 <body>
@@ -164,6 +175,7 @@
       <h1 class="delayed-fade">You've made it.</h1>
       <p>My name is Andrew Mihalevich. I'm an aspiring confidential informant. If you work for intelligence or law enforcement, please turn on my webcam and we can chat.</p>
       <a class="button" href="javascript:void(0)" onclick="registerInterest()">Register Interest</a>
+      <a class="button" href="#contact" style="margin-top: 1rem; display: inline-block;">Contact</a>
     </div>
   </section>
 
@@ -171,6 +183,14 @@
   <section id="affirmation" class="affirmation">
     <div class="container fade-in" id="message">
       <h2>I am centered, valid, and in control.</h2>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <!-- <h2>Contact</h2> -->
+      <p style="font-size: 1.5rem;">apmihal@gmai.com</p>
     </div>
   </section>
 
@@ -211,6 +231,7 @@
     });
 
   </script>
+  
 </body>
 
 </html>
